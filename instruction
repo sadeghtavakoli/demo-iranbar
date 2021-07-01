@@ -1,0 +1,37 @@
+{
+    "info": {
+        "_postman_id": "cae1cb2b-5984-43eb-8a9f-6723e86cb8de",
+        "name": "Product",
+        "schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+    },
+    "item": [
+        {
+            "name": "لیست کل شهر ها",
+            "request": {
+                "method": "GET",
+                "header": [],
+                "url": "https://dev.iranbarnet.com/Api/HelperApi/GetAllCities"
+            },
+            "response": []
+        },
+        {
+            "name": "ثبت نام مشتری",
+            "request": {
+                "method": "POST",
+                "header": [
+                    {
+                        "key": "Content-Type",
+                        "value": "application/json",
+                        "type": "text"
+                    }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\r\n\t\"CityCode\":41320000,\r\n    \"PostalCode\":\"1234567897\",\r\n    \"Mobile\":\"09179094579\",\r\n    \"Tel\":\"07138448968\",\r\n    \"NationID\":\"5139948755\",\r\n    \"customerName\":\"علیرضا رحیمی\",\r\n    \"Address\":\"شیراز\"\r\n   \r\n}"
+                },
+                "url": "https://dev.iranbarnet.com/Api/CustomerApi/AddCustomer"
+            },
+            "response": []
+        }
+    ]
+}
