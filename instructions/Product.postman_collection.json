@@ -1,0 +1,62 @@
+{
+	"id": "cae1cb2b-5984-43eb-8a9f-6723e86cb8de",
+	"name": "Product",
+	"description": "",
+	"auth": null,
+	"events": null,
+	"variables": [],
+	"order": [
+		"4acc9899-6b50-4b3a-9487-cff9535dfffb",
+		"c4f99a1f-56a1-4855-93f2-dea1d77beed9"
+	],
+	"folders_order": [],
+	"protocolProfileBehavior": {},
+	"folders": [],
+	"requests": [
+		{
+			"id": "4acc9899-6b50-4b3a-9487-cff9535dfffb",
+			"name": "لیست کل شهر ها",
+			"url": "https://dev.iranbarnet.com/Api/HelperApi/GetAllCities",
+			"description": "",
+			"data": null,
+			"dataOptions": null,
+			"dataMode": null,
+			"headerData": [],
+			"method": "GET",
+			"pathVariableData": [],
+			"queryParams": [],
+			"auth": null,
+			"events": null,
+			"folder": null,
+			"headers": "",
+			"pathVariables": {}
+		},
+		{
+			"id": "c4f99a1f-56a1-4855-93f2-dea1d77beed9",
+			"name": "ثبت نام مشتری",
+			"url": "https://dev.iranbarnet.com/Api/CustomerApi/AddCustomer",
+			"description": "",
+			"data": [],
+			"dataOptions": null,
+			"dataMode": "raw",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"method": "POST",
+			"pathVariableData": [],
+			"queryParams": [],
+			"auth": null,
+			"events": null,
+			"folder": null,
+			"rawModeData": "{\r\n\t\"CityCode\":41320000,\r\n    \"PostalCode\":\"1234567897\",\r\n    \"Mobile\":\"09179094579\",\r\n    \"Tel\":\"07138448968\",\r\n    \"NationID\":\"5139948755\",\r\n    \"customerName\":\"علیرضا رحیمی\",\r\n    \"Address\":\"شیراز\"\r\n   \r\n}",
+			"headers": "Content-Type: application/json\n",
+			"pathVariables": {}
+		}
+	]
+}
