@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
 import { getAllCities } from "./services/cityService";
 import { RegisterCustomer } from "./services/authService";
 function App() {
@@ -32,7 +31,9 @@ function App() {
       <mark>Register an Customer</mark>
       <br></br>
       <br></br>
-      <button onClick={() => register()}>Register</button>
+      <button className="btn btn-primary" onClick={() => register()}>
+        Register
+      </button>
       <br></br>
       <br></br>
       <mark>List of All Cities</mark>
