@@ -1,7 +1,7 @@
 import React from "react";
 import Joi from "joi-browser";
 import Form from "./form";
-import Modal from "./Modal";
+import CustomeModal from "./Modal";
 import { toast } from "react-toastify";
 import { getAllCities } from "../services/cityService";
 import { RegisterCustomer } from "../services/authService";
@@ -17,6 +17,8 @@ class RegisterForm extends Form {
     },
     errors: {},
     cities: [],
+    modalIsVisible: false,
+    modalContent: {},
   };
 
   schema = {
@@ -43,12 +45,22 @@ class RegisterForm extends Form {
       customer.CityCode = Number(customer.CityCode);
       customer.NationID = customer.Mobile + customer.PostalCode;
       const { data: response } = await RegisterCustomer(customer);
-      console.log(response);
 
       if (typeof response.data === "object") {
         // it means user was already registered!!
+        const modalContent = { ...response };
+        // change cityCode with cityName
+        const myCity = this.state.cities.filter(
+          (city) => city.cityId === response.data.cityCode
+        );
+        modalContent.data.cityCode = myCity[0].cityName;
+        this.setState({
+          modalIsVisible: true,
+          modalContent,
+        });
+      } else {
+        alert(response.message);
       }
-      alert(response.message);
       //using this line of code will cuase app be reloaded again
       //like we first entered it
       // window.location = "/";
@@ -68,7 +80,14 @@ class RegisterForm extends Form {
   render() {
     return (
       <>
-        <Modal show />
+        <CustomeModal
+          show={this.state.modalIsVisible}
+          onHide={() => {
+            this.setState({ modalIsVisible: false });
+          }}
+          content={this.state.modalContent}
+        />
+
         <div className="RegisterForm">
           <h1>ثبت نام صاحب کالا</h1>
           <form onSubmit={this.handleSubmit}>
@@ -80,27 +99,6 @@ class RegisterForm extends Form {
             {this.renderInput("PostalCode", "کد پستی")}
             {this.renderSubmit("ثبت اطلاعات")}
           </form>
-
-          <button
-            type="button"
-            class="btn btn-primary"
-            data-toggle="modal"
-            data-target=".bd-example-modal-lg"
-          >
-            Large modal
-          </button>
-
-          <div
-            class="modal fade bd-example-modal-lg"
-            tabindex="-1"
-            role="dialog"
-            aria-labelledby="myLargeModalLabel"
-            aria-hidden="true"
-          >
-            <div class="modal-dialog modal-lg">
-              <div class="modal-content">...</div>
-            </div>
-          </div>
         </div>
       </>
     );

@@ -9,9 +9,17 @@ body {
 }
 
 .RegisterForm {
-  text-align: center;
+  text-align: right;
   padding: 10%;
+}
+h1 {
+  text-align: center;
 }
 label {
   margin: 1rem;
+  text-align: right;
+}
+
+.custome-modal {
+  text-align: right;
 }
