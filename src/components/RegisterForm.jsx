@@ -2,7 +2,6 @@ import React from "react";
 import Joi from "joi-browser";
 import Form from "./form";
 import CustomeModal from "./Modal";
-import { toast } from "react-toastify";
 import { getAllCities } from "../services/cityService";
 import { RegisterCustomer } from "../services/authService";
 class RegisterForm extends Form {
